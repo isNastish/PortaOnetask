@@ -1,8 +1,9 @@
-file = open('originalFile.txt').readlines() # Чмтаем файл.
+file = open('original_file.txt').readlines() # Чмтаем файл.
 list1 = [int(i.rstrip()) for i in file] # Создем список всех целых чисел в файле.
 
 LengthGrow = [] # Здесь будет сохраняться число(длинна наибольшой возрастающей последовательности).
-LengthFall = [] # Аналогично LengthGrow только(длинна наибольшой убывающей последовательности).
+LengthFall = []# Аналогично LengthGrow только(длинна наибольшой убывающей последовательности).
+Average = 0 # Переменная в которую будем сумировать все числа в файле.
 # Находим медиану чисел в исходном файле.
 for j in range(len(list1)):
     if (len(list1) % 2) != 0: # Если количество чисел не четное.
@@ -15,6 +16,7 @@ for j in range(len(list1)):
             break
 # Наибольшая возрастающая последовательность.
 for k in range(len(list1)):
+    Average += list1[k]
     if not k:
         Grow = []
         Grow.append(list1[k])
@@ -65,5 +67,5 @@ print('Biggest Decrease list:',tempFall,\
     'Biggest Increase list:',tempGrow,\
     'Length:',len(tempGrow),'\n'\
     'Maximum:',max(list1),'\n'\
-    'Minimum:',min(list1))
-
+    'Minimum:',min(list1),'\n'\
+    'Average: %.5f' % (Average / len(list1)))
